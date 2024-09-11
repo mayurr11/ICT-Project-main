@@ -1,0 +1,18 @@
+/* styles for ButtonComponent.vue */
+
+.custom-button {
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin: 0.2rem;
+}
+
+@media screen and (max-width: 820px) {
+    .custom-button {
+        padding: 20px 20px;
+    }
+}

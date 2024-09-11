@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Schedule</title>
+</head>
+<body>
+    <h1>Flight Schedule</h1>
+    <ul>
+        {% for flight in flights %}
+            <li>
+                <p>{{flight.location}}</p>
+                <p>{{flight.date}}</p>
+                <p>{{flight.time}}</p>
+                <p>{{flight.status}}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="query.html">flight details link</a>
+</body>
+</html>
