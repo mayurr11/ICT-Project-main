@@ -34,7 +34,7 @@
 
         <!-- Modal for Calendar -->
         <div v-if="isCalendarModalOpen" class="modal">
-          <div class="modal-content">
+          <div class="modal-content calendar-modal">
             <span class="close" @click="closeCalendarModal">&times;</span>
             <h1>Calendar</h1>
             <div class="calendar-container" ref="calendarContainer"></div>
@@ -129,8 +129,6 @@
 
     <!-- Main Content -->
     <div class="main-content">
-      <CalendarComponent />
-
       <VideoComponent />
 
       <div class="right-section">
@@ -139,11 +137,11 @@
 
           <!-- List of flight information -->
           <ul>
-            <li> - Flight Speed: </li>
-            <li> - Take off time: </li>
-            <li> - Docking time: </li>
-            <li> - Flight duration: </li>
-            <li> - Location: </li>
+            <li> Flight Speed: </li>
+            <li> Take off time: </li>
+            <li> Docking time: </li>
+            <li> Flight duration: </li>
+            <li> Location: </li>
           </ul>
         </div>
       </div>
@@ -352,6 +350,7 @@ export default {
     },
   },
   mounted() {
+    document.title = "Home";
     this.fetchTodayFlights();
     console.log(this.upcomingFlights)
     console.log('test')

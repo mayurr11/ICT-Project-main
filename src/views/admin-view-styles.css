@@ -1,15 +1,17 @@
 /* General Styles for Messages Section */
 .messages-section {
-    background: #f9f9f9;
+    /* background: #f9f9f9; */
+    background: #fff;
     border-radius: 8px;
     padding: 20px;
-    margin: 20px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* margin: 20px 0; */
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
 }
 
 .messages-section h2 {
-    font-size: 24px;
-    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #000000;
     margin-bottom: 15px;
 }
 
@@ -22,11 +24,11 @@
 .messages-section li {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    padding: 20px 15px;
     margin-bottom: 10px;
 }
 
@@ -42,16 +44,17 @@
     gap: 10px;
     /* Adds space between buttons */
     align-items: center;
+    /* justify-content: center; */
 }
 
 .messages-section li p {
     margin: 0;
     font-size: 16px;
-    color: #333;
+    color: #000000;
 }
 
 .messages-section li button {
-    background: #007bff;
+    background: #000;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -61,7 +64,8 @@
 }
 
 .messages-section li button:hover {
-    background: #0056b3;
+    background: #fff;
+    color: #000;
 }
 
 /* Modal Styles */
@@ -79,30 +83,30 @@
     transition: opacity 0.3s ease;
 }
 
-.modal-content {
-    background: #fff;
+div.modal-content {
+    background: #ffffff;
     padding: 20px;
     border-radius: 8px;
-    max-width: 500px;
+    max-width: 400px;
     width: 100%;
     text-align: center;
     position: relative;
 }
 
 .modal-content h2 {
-    /* font-size: 20px; */
-    text-align: start;
+    font-size: 24px;
+    text-align: center;
     color: #000000;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .modal-content .close {
     position: absolute;
     top: 20px;
     right: 50px;
-    background-color: #d10000;
+    background-color: #000000;
     color: #fff;
-    width: 10px;
+    width: 11px;
     /* Width and height must be equal */
     height: 30px;
     /* Width and height must be equal */
@@ -118,31 +122,41 @@
 }
 
 .modal-content .close:hover {
-    background-color: #b10000;
+    background-color: #161616;
+    color: #a1a1a1;
 }
 
 .input-reply {
     width: calc(100% - 20px);
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #a1a1a1;
+}
+
+.input-reply:focus {
+    border: 2px solid #000000;
     outline: none;
 }
 
-button.reply-button {
-    background: #28a745;
+button.submit-reply {
+    width: 100%;
+    align-self: flex-start;
+    padding: 12px;
+    background-color: #000;
     color: #fff;
     border: none;
-    border-radius: 4px;
-    padding: 10px 60px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
-.reply-button:hover {
-    background: #218838;
+.submit-reply:hover {
+    background-color: #161616;
+    color: #a1a1a1;
 }
 
 /* Success Popup Styles */
@@ -255,20 +269,29 @@ button.reply-button {
     }
 }
 
-.message-right .red {
-    background-color: red;
+.message-right .reply {
+    background-color: #000;
+    color: #fff;
+    outline: 1px solid #000;
+    transition: all ease-in-out 200ms;
 }
 
-.message-right .red:hover {
-    background-color: rgb(201, 3, 3);
+.message-right .reply:hover {
+    background-color: #161616;
+    color: #a1a1a1;
 }
 
-.message-right .green {
-    background-color: #218838;
+.message-right .dismiss {
+    background-color: transparent;
+    color: #000;
+    outline: 1px solid #000;
+    transition: all ease-in-out 200ms;
 }
 
-.message-right .green:hover {
-    background-color: #046419;
+.message-right .dismiss:hover {
+    background-color: #000;
+    color: #fff;
+    outline: 1px solid #000;
 }
 
 .no-enquiries {
@@ -282,4 +305,3 @@ button.reply-button {
     font-weight: bold;
     margin-right: 8px;
 }
-  

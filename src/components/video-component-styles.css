@@ -6,7 +6,7 @@
   background: transparent;
   display: grid;
   place-items: center;
-  box-shadow: 0 0 10px #111;
+  /* box-shadow: 0 0 10px #111; */
   border-radius: 15px; /* Adjust the border-radius as needed */
   overflow: hidden; /* Ensures that the video respects the rounded corners */
 }

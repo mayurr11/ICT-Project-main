@@ -21,11 +21,11 @@
         <div class="box-content">
           <!-- List of flight information -->
           <ul>
-            <li> - Flight Speed: </li>
-            <li> - Take off time: </li>
-            <li> - Docking time: </li>
-            <li> - Flight duration: </li>
-            <li> - Location: </li>
+            <li>Flight Speed: </li>
+            <li>Take off time: </li>
+            <li>Docking time: </li>
+            <li>Flight duration: </li>
+            <li>Location: </li>
           </ul>
         </div>
       </div>
@@ -34,7 +34,13 @@
 
     <!-- Messages Section -->
     <div class="messages-section">
-      <h2>Messages</h2>
+      <h2>Enquiries</h2>
+      <!-- Refresh Button -->
+      <!-- <button @click="refreshMessages" :disabled="isFetchingMessages" class="refresh-button">
+        <span v-if="isFetchingMessages">Refreshing...</span>
+        <span v-else>Refresh Messages</span>
+      </button> -->
+
       <div v-if="messages.length === 0" class="no-enquiries">
         <p>No enquiries available.</p>
       </div>
@@ -45,8 +51,8 @@
             <p><strong>{{ message.sender }}</strong>: {{ message.content }}</p>
           </div>
           <div class="message-right">
-            <button class="green" @click="openReplyModal(message.sender, message.id)">Reply</button>
-            <button class="red" @click="dismissMessage(message.id)">Dismiss</button>
+            <button class="reply" @click="openReplyModal(message.sender, message.id)">Reply</button>
+            <button class="dismiss" @click="dismissMessage(message.id)">Dismiss</button>
           </div>
         </li>
       </ul>
@@ -63,7 +69,7 @@
             :maxlength="maxReplyLength" :disabled="isSending"></textarea>
           <br>
           <p v-if="replyError" class="error-message">{{ replyError }}</p>
-          <button type="submit" class="reply-button" :disabled="isSending">
+          <button type="submit" class="submit-reply" :disabled="isSending">
             <span v-if="isSending">Sending reply...</span>
             <span v-else>Send</span>
           </button>
@@ -104,6 +110,7 @@ export default {
       responseEmail: '',
       maxReplyLength: '300', // maximum length for the reply text
       isSending: false, // state to track if the message is being sent
+      // isFetchingMessages: false, 
     };
   },
   computed: {
@@ -187,12 +194,16 @@ export default {
         .catch(error => {
           console.error('Error fetching messages:', error);
         });
+    },
+    refreshMessages() {
+      this.fetchMessages();
     }
   },
   mounted() {
+    document.title = "Admin Panel";
     if (this.isLoggedIn) {
       this.fetchMessages();
-      setInterval(this.fetchMessages, 2000); // Fetch messages every 2 seconds
+      setInterval(this.fetchMessages, 10000);
     } else {
       this.$router.push({ name: 'login' });
     }

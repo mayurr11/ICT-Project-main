@@ -6,15 +6,18 @@
 
       <div class="login-container">
         <div class="left-form">
-          <h1 class="login-title">Admin<br /><span class="bold">Login</span></h1>
+          <!-- <h1 class="login-title">Admin<br /><span class="bold">Login</span></h1> -->
+          <h1 class="login-title"><span class="bold">Admin Login</span></h1>
           <form @submit.prevent="login" class="login-form">
             <input type="text" v-model="username" placeholder="Username" class="input-field" required>
             <input type="password" v-model="password" placeholder="Password" class="input-field" required>
             <button type="submit" class="login-button">Login</button>
+            <p class="back-home-link"><router-link to="/" class="back-home-link"> &lt; Back to Home</router-link></p>
           </form>
+          <!-- Back to Home link -->
         </div>
-        <div class="img-background">
-        </div>
+        <!-- <div class="img-background">
+        </div> -->
       </div>
 
     </div>
@@ -50,41 +53,43 @@ export default {
   },
   methods: {
     login() {
-    if (this.username && this.password) {
-      const credentials = { username: this.username, password: this.password };
-      this.$store.dispatch('login', credentials)
-        .then((loggedIn) => {
-          if (loggedIn) {
-            this.showPopup = true;
-            this.popupMessage = 'Login successful! ✅';
-            this.username = '';
-            this.password = '';
-            setTimeout(() => {
-              this.$router.push({ name: 'admin' });
-            }, 1000);
-          } else {
-            this.showPopup = true;
-            this.popupMessage = 'Invalid username or password! ❌';
-            this.username = '';
-            this.password = '';
-            setTimeout(() => {
-              this.showPopup = false;
-            }, 1000);
-          }
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    } else {
-      console.error('Username and password are required');
-    }
-  },
-
+      if (this.username && this.password) {
+        const credentials = { username: this.username, password: this.password };
+        this.$store.dispatch('login', credentials)
+          .then((loggedIn) => {
+            if (loggedIn) {
+              this.showPopup = true;
+              this.popupMessage = 'Login successful! ✅';
+              this.username = '';
+              this.password = '';
+              setTimeout(() => {
+                this.$router.push({ name: 'admin' });
+              }, 1000);
+            } else {
+              this.showPopup = true;
+              this.popupMessage = 'Invalid username or password! ❌';
+              this.username = '';
+              this.password = '';
+              setTimeout(() => {
+                this.showPopup = false;
+              }, 1000);
+            }
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      } else {
+        console.error('Username and password are required');
+      }
+    },
     // Method to close popup
     closePopup() {
       this.showPopup = false;
     }
-  }
+  },
+  mounted() {
+    document.title = "Login";
+  },
 };
 </script>
 
